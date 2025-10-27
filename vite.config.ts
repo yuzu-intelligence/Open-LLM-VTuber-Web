@@ -47,6 +47,7 @@ const createConfig = async (outDir: string) => ({
   publicDir: path.join(__dirname, "src/renderer/public"),
   base: "./",
   server: {
+    // host: true,
     port: 3000,
   },
   build: {
