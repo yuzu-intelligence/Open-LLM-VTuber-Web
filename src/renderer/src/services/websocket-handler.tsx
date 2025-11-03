@@ -48,7 +48,7 @@ function WebSocketHandler({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (pendingModelInfo && confUid) {
       // Had to use this to get the model show up
-      setModelInfo({...pendingModelInfo, url: "http://13.59.242.99:12393/live2d-models/mao_pro/runtime/mao_pro.model3.json"});
+      setModelInfo({...pendingModelInfo, url: "https://vtuber.capi-infra.com/live2d-models/mao_pro/runtime/mao_pro.model3.json"});
       // setModelInfo(pendingModelInfo); 
       setPendingModelInfo(undefined);
     }
