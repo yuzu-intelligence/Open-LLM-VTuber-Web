@@ -110,22 +110,9 @@ const HeaderButtons = memo(({ onSettingsOpen, onNewHistory, setMode, currentMode
 
 HeaderButtons.displayName = 'HeaderButtons';
 
-const SidebarContent = memo(({ 
-  onSettingsOpen, 
-  onNewHistory, 
-  setMode, 
-  currentMode,
-  isElectron
-}: HeaderButtonsProps) => (
+const SidebarContent = memo(({}: HeaderButtonsProps) => (
   <Box {...sidebarStyles.sidebar.content}>
     <Box {...sidebarStyles.sidebar.header}>
-      <HeaderButtons
-        onSettingsOpen={onSettingsOpen}
-        onNewHistory={onNewHistory}
-        setMode={setMode}
-        currentMode={currentMode}
-        isElectron={isElectron}
-      />
     </Box>
     <ChatHistoryPanel />
     <BottomTab />
@@ -135,7 +122,7 @@ const SidebarContent = memo(({
 SidebarContent.displayName = 'SidebarContent';
 
 // Main component
-function Sidebar({ isCollapsed = false, onToggle }: SidebarProps): JSX.Element {
+function Sidebar({ isCollapsed = true, onToggle }: SidebarProps): JSX.Element {
   const {
     settingsOpen,
     onSettingsOpen,

@@ -31,7 +31,7 @@ import Subtitle from "./components/canvas/subtitle";
 import { ModeProvider, useMode } from "./context/mode-context";
 
 function AppContent(): JSX.Element {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [isFooterCollapsed, setIsFooterCollapsed] = useState(false);
   const { mode } = useMode();
   const isElectron = window.api !== undefined;

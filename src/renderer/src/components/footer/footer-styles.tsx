@@ -72,7 +72,7 @@ export const footerStyles: {
     },
     attachButton: {
       position: 'absolute',
-      left: '1',
+      right: '1',
       top: '50%',
       transform: 'translateY(-50%)',
       color: 'whiteAlpha.700',
