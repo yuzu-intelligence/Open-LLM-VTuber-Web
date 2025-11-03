@@ -21,14 +21,6 @@ function BottomTab(): JSX.Element {
           <FiCamera />
           {t('sidebar.camera')}
         </Tabs.Trigger>
-        <Tabs.Trigger value="screen" {...sidebarStyles.bottomTab.trigger}>
-          <FiMonitor />
-          {t('sidebar.screen')}
-        </Tabs.Trigger>
-        <Tabs.Trigger value="browser" {...sidebarStyles.bottomTab.trigger}>
-          <FiGlobe />
-          {t('sidebar.browser')}
-        </Tabs.Trigger>
       </Tabs.List>
 
       <Tabs.Content value="camera">

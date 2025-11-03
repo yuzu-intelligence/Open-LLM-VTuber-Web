@@ -5,12 +5,14 @@ import {
 import { BsMicFill, BsMicMuteFill, BsPaperclip } from 'react-icons/bs';
 import { IoHandRightSharp } from 'react-icons/io5';
 import { FiChevronDown } from 'react-icons/fi';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { InputGroup } from '@/components/ui/input-group';
 import { footerStyles } from './footer-styles';
 import AIStateIndicator from './ai-state-indicator';
 import { useFooter } from '@/hooks/footer/use-footer';
+import { LuSend } from 'react-icons/lu';
+import { useTextInput } from '@/hooks/footer/use-text-input';
 
 // Type definitions
 interface FooterProps {
@@ -62,14 +64,14 @@ const ActionButtons = memo(({ micOn, onMicToggle, onInterrupt }: ActionButtonsPr
     >
       {micOn ? <BsMicFill /> : <BsMicMuteFill />}
     </IconButton>
-    <IconButton
+    {/* <IconButton
       aria-label="Raise hand"
       bg="yellow.500"
       {...footerStyles.footer.actionButton}
       onClick={onInterrupt}
     >
       <IoHandRightSharp size="24" />
-    </IconButton>
+    </IconButton> */}
   </HStack>
 ));
 
@@ -84,16 +86,17 @@ const MessageInput = memo(({
 }: MessageInputProps) => {
   const { t } = useTranslation();
 
+  const handleSendClick = useCallback((_: React.MouseEvent) => {
+    onKeyDown?.({
+      key: 'Enter',
+      code: 'Enter',
+      preventDefault: () => {},
+    } as unknown as React.KeyboardEvent<HTMLTextAreaElement>);
+  }, [onKeyDown]);
+
   return (
     <InputGroup flex={1}>
       <Box position="relative" width="100%">
-        <IconButton
-          aria-label="Attach file"
-          variant="ghost"
-          {...footerStyles.footer.attachButton}
-        >
-          <BsPaperclip size="24" />
-        </IconButton>
         <Textarea
           value={value}
           onChange={onChange}
@@ -103,6 +106,14 @@ const MessageInput = memo(({
           placeholder={t('footer.typeYourMessage')}
           {...footerStyles.footer.input}
         />
+        <IconButton
+          aria-label="Attach file"
+          variant="ghost"
+          onClick={handleSendClick}
+          {...footerStyles.footer.attachButton}
+        >
+          <LuSend size={24} />
+        </IconButton>
       </Box>
     </InputGroup>
   );
